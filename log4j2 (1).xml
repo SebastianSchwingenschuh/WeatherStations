@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <RollingFile name="RollingFileAppenderAll"
+                     fileName="logs/application-trace-${date:yyyyMMdd}.log"
+                     filePattern="logs/application-trace-${date:yyyyMMdd}.%i.log">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+        <RollingFile name="RollingFileAppenderInfo"
+                     fileName="logs/application-info-${date:yyyyMMdd}.log"
+                     filePattern="logs/application-info-${date:yyyyMMdd}.%i.log">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <LevelRangeFilter minLevel="FATAL" maxLevel="INFO"
+                              onMatch="ACCEPT" onMismatch="DENY"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Root level="TRACE">
+            <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="RollingFileAppenderInfo"/>
+            <AppenderRef ref="RollingFileAppenderAll"/>
+        </Root>
+    </Loggers>
+</Configuration>
