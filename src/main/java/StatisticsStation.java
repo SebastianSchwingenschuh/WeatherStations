@@ -5,6 +5,7 @@ public class StatisticsStation extends WeatherStation{
 
     public StatisticsStation(int x, int y, double sensorRange) {
         super(x, y, sensorRange);
+        temperatures = new TreeSet<>();
     }
 
     public TreeSet<Double> getTemperatures() {
@@ -12,15 +13,23 @@ public class StatisticsStation extends WeatherStation{
     }
 
     public double getLowestRecordedTemperature(){
-        return -1;
+        try{
+            return this.temperatures.getFirst();
+        }catch (Exception e){
+            throw new WeatherException("No temperatures have been added yet.");
+        }
     }
     
     public double getHighestRecordedTemperature(){
-        return -1;
+        try{
+            return this.temperatures.getLast();
+        }catch (Exception e){
+            throw new WeatherException("No temperatures have been added yet.");
+        }
     }
 
     @Override
     public void update(SensorReading sensorReading) {
-        super.update(sensorReading);
+        
     }
 }

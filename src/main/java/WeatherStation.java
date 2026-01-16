@@ -15,21 +15,50 @@ public abstract class WeatherStation implements WeatherObserver {
         return sensorRange;
     }
 
+    private void setX(int x) {
+        if (x <= 0.0) {
+            throw new IllegalArgumentException();
+        } else {
+            this.x = x;
+        }
+    }
+
+    private void setY(int y) {
+        if (y <= 0.0) {
+            throw new IllegalArgumentException();
+        } else {
+            this.y = y;
+        }
+    }
+
+    private void setSensorRange(double sensorRange) {
+        if (sensorRange <= 0.0) {
+            throw new IllegalArgumentException();
+        } else {
+            this.sensorRange = sensorRange;
+        }
+    }
+
     public WeatherStation(int x, int y, double sensorRange) {
         this.x = x;
         this.y = y;
-        this.sensorRange = sensorRange;
+        this.setSensorRange(sensorRange);
     }
-    
-    public double calculateDistanceTo(int x, int y){
-        return -1;
+
+    public double calculateDistanceTo(int x, int y) {
+        int deltaX = this.x - x;
+        int deltaY = this.y - y;
+        
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     }
-    
-    public boolean isInRange(SensorReading sensorReading){
-        return false;
+
+    public boolean isInRange(SensorReading sensorReading) {
+        double distance = calculateDistanceTo(sensorReading.getX(), sensorReading.getY());
+        
+        return distance <= this.getSensorRange();
     }
-    
-    public void update(SensorReading sensorReading){
+
+    public void update(SensorReading sensorReading) {
         
     }
 }
