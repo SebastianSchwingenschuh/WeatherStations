@@ -5,13 +5,10 @@ public class ClimateStation extends WeatherStation {
 
     public ClimateStation(int x, int y, double sensorRange) {
         super(x, y, sensorRange);
-        climates.put(Climate.POLAR, 0);
-        climates.put(Climate.TROPICAL, 0);
-        climates.put(Climate.TEMPERATE, 0);
     }
 
     public int getCountByClimate(Climate climate) {
-        return climates.get(climate);
+        return climates.getOrDefault(climate, 0);
     }
 
     @Override
