@@ -1,7 +1,7 @@
 public abstract class WeatherStation implements WeatherObserver {
-    private int x;
-    private int y;
-    private double sensorRange;
+    private final int x;
+    private final int y;
+    private final double sensorRange;
 
     public int getX() {
         return x;
@@ -15,34 +15,14 @@ public abstract class WeatherStation implements WeatherObserver {
         return sensorRange;
     }
 
-    private void setX(int x) {
-        if (x <= 0.0) {
-            throw new IllegalArgumentException();
-        } else {
-            this.x = x;
-        }
-    }
-
-    private void setY(int y) {
-        if (y <= 0.0) {
-            throw new IllegalArgumentException();
-        } else {
-            this.y = y;
-        }
-    }
-
-    private void setSensorRange(double sensorRange) {
+    public WeatherStation(int x, int y, double sensorRange) {
+        this.x = x;
+        this.y = y;
         if (sensorRange <= 0.0) {
             throw new IllegalArgumentException();
         } else {
             this.sensorRange = sensorRange;
         }
-    }
-
-    public WeatherStation(int x, int y, double sensorRange) {
-        this.x = x;
-        this.y = y;
-        this.setSensorRange(sensorRange);
     }
 
     public double calculateDistanceTo(int x, int y) {
