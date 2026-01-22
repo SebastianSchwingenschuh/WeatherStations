@@ -11,18 +11,18 @@ class SensorReadingTest {
     void testConstructor() {
         SensorReading reading = new SensorReading(50, 100, 22.0);
 
-        assertEquals(50, reading.getX());
-        assertEquals(100, reading.getY());
-        assertEquals(22.0, reading.getTemperatureCelsius(), 0.001);
+        assertEquals(50, reading.x());
+        assertEquals(100, reading.y());
+        assertEquals(22.0, reading.temperatureCelsius(), 0.001);
     }
 
     @Test
     void testConstructorExtremeCold() {
         SensorReading reading = new SensorReading(50, 100, -273.15);
 
-        assertEquals(50, reading.getX());
-        assertEquals(100, reading.getY());
-        assertEquals(-273.15, reading.getTemperatureCelsius(), 0.001);
+        assertEquals(50, reading.x());
+        assertEquals(100, reading.y());
+        assertEquals(-273.15, reading.temperatureCelsius(), 0.001);
     }
 
     @Test

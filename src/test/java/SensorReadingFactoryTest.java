@@ -21,9 +21,9 @@ class SensorReadingFactoryTest {
 
         SensorReading reading = readingFactory.createFromString("175;60;31.5");
 
-        assertEquals(175, reading.getX());
-        assertEquals(60, reading.getY());
-        assertEquals(31.5, reading.getTemperatureCelsius(), 0.001);
+        assertEquals(175, reading.x());
+        assertEquals(60, reading.y());
+        assertEquals(31.5, reading.temperatureCelsius(), 0.001);
     }
 
     @Test
@@ -32,9 +32,9 @@ class SensorReadingFactoryTest {
 
         SensorReading reading = readingFactory.createFromString("   25   ;   140   ;   -3.0     ");
 
-        assertEquals(25, reading.getX());
-        assertEquals(140, reading.getY());
-        assertEquals(-3.0, reading.getTemperatureCelsius(), 0.001);
+        assertEquals(25, reading.x());
+        assertEquals(140, reading.y());
+        assertEquals(-3.0, reading.temperatureCelsius(), 0.001);
     }
 
     @Test
@@ -74,9 +74,9 @@ class SensorReadingFactoryTest {
 
         SensorReading reading = readingFactory.createFromString("90;120;-13.0");
 
-        assertEquals(90, reading.getX());
-        assertEquals(120, reading.getY());
-        assertEquals(-25.0, reading.getTemperatureCelsius(), 0.001);
+        assertEquals(90, reading.x());
+        assertEquals(120, reading.y());
+        assertEquals(-25.0, reading.temperatureCelsius(), 0.001);
     }
 
     @Test
@@ -85,12 +85,12 @@ class SensorReadingFactoryTest {
 
         SensorReading reading = readingFactory.createFromString("90;120;13.5");
 
-        assertEquals(90, reading.getX());
-        assertEquals(120, reading.getY());
+        assertEquals(90, reading.x());
+        assertEquals(120, reading.y());
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //Use Math.round() inside the factory!!!
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        assertEquals(-10.0, reading.getTemperatureCelsius(), 0.001);
+        assertEquals(-10.0, reading.temperatureCelsius(), 0.001);
     }
 
     @Test
@@ -99,9 +99,9 @@ class SensorReadingFactoryTest {
 
         SensorReading reading = readingFactory.createFromString("   90   ;     120      ;    55.4   ");
 
-        assertEquals(90, reading.getX());
-        assertEquals(120, reading.getY());
-        assertEquals(13.0, reading.getTemperatureCelsius(), 0.001);
+        assertEquals(90, reading.x());
+        assertEquals(120, reading.y());
+        assertEquals(13.0, reading.temperatureCelsius(), 0.001);
     }
 
     @Test

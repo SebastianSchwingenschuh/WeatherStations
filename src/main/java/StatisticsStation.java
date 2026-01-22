@@ -1,8 +1,8 @@
 import java.util.TreeSet;
 
-public class StatisticsStation extends WeatherStation{
+public class StatisticsStation extends WeatherStation {
     private static final String NO_TEMPS_EXISTING_MSG = "No temperatures have been added yet.";
-    private TreeSet<Double> temperatures;
+    private final TreeSet<Double> temperatures;
 
     public StatisticsStation(int x, int y, double sensorRange) {
         super(x, y, sensorRange);
@@ -13,26 +13,26 @@ public class StatisticsStation extends WeatherStation{
         return (TreeSet<Double>) temperatures.clone();
     }
 
-    public double getLowestRecordedTemperature(){
-        try{
+    public double getLowestRecordedTemperature() {
+        try {
             return this.temperatures.getFirst();
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new WeatherException(NO_TEMPS_EXISTING_MSG);
         }
     }
-    
-    public double getHighestRecordedTemperature(){
-        try{
+
+    public double getHighestRecordedTemperature() {
+        try {
             return this.temperatures.getLast();
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new WeatherException(NO_TEMPS_EXISTING_MSG);
         }
     }
 
     @Override
     public void update(SensorReading sensorReading) {
-        if(isInRange(sensorReading)){
-            temperatures.add((sensorReading.getTemperatureCelsius()));
+        if (isInRange(sensorReading)) {
+            temperatures.add((sensorReading.temperatureCelsius()));
         }
     }
 }

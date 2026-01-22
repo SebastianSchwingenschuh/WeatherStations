@@ -1,6 +1,6 @@
-public class AlarmStation extends WeatherStation{
-    private double triggerLow;
-    private double triggerHigh;
+public class AlarmStation extends WeatherStation {
+    private final double triggerLow;
+    private final double triggerHigh;
     private int alarmsRaised;
 
     public AlarmStation(int x, int y, double sensorRange, double triggerLow, double triggerHigh) {
@@ -24,9 +24,9 @@ public class AlarmStation extends WeatherStation{
 
     @Override
     public void update(SensorReading sensorReading) {
-        if(isInRange(sensorReading)){
-            if(sensorReading.getTemperatureCelsius() <= triggerLow || sensorReading.getTemperatureCelsius() >= triggerHigh){
-                alarmsRaised ++;
+        if (isInRange(sensorReading)) {
+            if (sensorReading.temperatureCelsius() <= triggerLow || sensorReading.temperatureCelsius() >= triggerHigh) {
+                alarmsRaised++;
             }
         }
     }

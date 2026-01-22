@@ -48,17 +48,16 @@ public abstract class WeatherStation implements WeatherObserver {
     public double calculateDistanceTo(int x, int y) {
         int deltaX = this.x - x;
         int deltaY = this.y - y;
-        
+
         return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     }
 
     public boolean isInRange(SensorReading sensorReading) {
-        double distance = calculateDistanceTo(sensorReading.getX(), sensorReading.getY());
-        
+        double distance = calculateDistanceTo(sensorReading.x(), sensorReading.y());
+
         return distance <= this.getSensorRange();
     }
 
     public void update(SensorReading sensorReading) {
-        
     }
 }

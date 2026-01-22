@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class ClimateStation extends WeatherStation{
+public class ClimateStation extends WeatherStation {
     HashMap<Climate, Integer> climates = new HashMap<>();
 
     public ClimateStation(int x, int y, double sensorRange) {
@@ -9,16 +9,16 @@ public class ClimateStation extends WeatherStation{
         climates.put(Climate.TROPICAL, 0);
         climates.put(Climate.TEMPERATE, 0);
     }
-    
-    public int getCountByClimate(Climate climate){
+
+    public int getCountByClimate(Climate climate) {
         return climates.get(climate);
     }
 
     @Override
     public void update(SensorReading sensorReading) {
-        double temp = sensorReading.getTemperatureCelsius();
-        if(isInRange(sensorReading)){
-            if(temp <= 0.0){
+        double temp = sensorReading.temperatureCelsius();
+        if (isInRange(sensorReading)) {
+            if (temp <= 0.0) {
                 climates.put(Climate.POLAR, climates.get(Climate.POLAR) + 1);
             } else if (temp >= 25.0) {
                 climates.put(Climate.TROPICAL, climates.get(Climate.TROPICAL) + 1);
